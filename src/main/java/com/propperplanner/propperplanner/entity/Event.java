@@ -1,5 +1,6 @@
 package com.propperplanner.propperplanner.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Event {
     @Column(name = "id")
     private Integer id;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "date")
     private Date date;
 
