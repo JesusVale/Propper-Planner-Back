@@ -20,6 +20,17 @@ public class RoutineActivityService implements IRoutineActivityService{
     RoutineActivityDAO routineActivityDAO;
 
     @Override
+    public RoutineActivity getRoutineActivityById(Integer id) {
+        Optional<RoutineActivity> routineOptional = routineActivityDAO.findById(id);
+        if(routineOptional.isPresent()){
+            RoutineActivity routineActivity = routineOptional.get();
+            return routineActivity;
+        } else{
+            throw new EntityNotFoundException("No se encontró una actividad con el id: "+ id);
+        }
+    }
+
+    @Override
     public List<RoutineActivity> getRoutineByDay(String day) {
         List<RoutineActivity> routineActivities = routineActivityDAO.getRoutineByDay(day);
         Collections.sort(routineActivities, new Comparator<RoutineActivity>() {

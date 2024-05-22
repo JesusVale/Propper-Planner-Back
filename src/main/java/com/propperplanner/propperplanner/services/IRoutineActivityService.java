@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IRoutineActivityService {
 
+    public RoutineActivity getRoutineActivityById(Integer id);
     public List<RoutineActivity> getRoutineByDay(String day);
 
     public RoutineActivity addRoutineActivity(RoutineActivity routineActivity);
