@@ -11,6 +11,8 @@ public interface IRoutineActivityService {
 
     public RoutineActivity addRoutineActivity(RoutineActivity routineActivity);
 
+    public RoutineActivity updateRoutineActivity(Integer id, RoutineActivity routineActivity);
+
     public void deleteRoutineActivity(Integer id);
 
 }
