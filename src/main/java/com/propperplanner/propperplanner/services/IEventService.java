@@ -11,6 +11,8 @@ public interface IEventService {
 
     public Event addEvent(Event event);
 
+    public Event updateEvent(Integer id, Event event);
+
     public void removeEvent(Integer id);
 
 }
