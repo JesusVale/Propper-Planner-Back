@@ -1,6 +1,8 @@
 package com.propperplanner.propperplanner.controllers;
 
 import com.propperplanner.propperplanner.entity.Event;
+import com.propperplanner.propperplanner.exceptions.EntityNotFoundException;
+import com.propperplanner.propperplanner.exceptions.OverlapException;
 import com.propperplanner.propperplanner.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +47,9 @@ public class EventController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Integer id, @RequestBody Event event){
+        Event changedEvent = eventService.updateEvent(id, event);
+        return ResponseEntity.ok(changedEvent);
+    }
 }
