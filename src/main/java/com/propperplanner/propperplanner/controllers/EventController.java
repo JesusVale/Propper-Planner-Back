@@ -21,7 +21,13 @@ public class EventController {
     @Autowired
     EventService eventService;
 
-    @GetMapping("/{day}")
+    @GetMapping("/{id}")
+    public ResponseEntity<Event> getEventById(@PathVariable Integer id){
+        Event event = this.eventService.getEventById(id);
+        return ResponseEntity.ok(event);
+    }
+
+    @GetMapping("/day/{day}")
     public ResponseEntity<?> getEventByDay(@PathVariable String day){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         try{
@@ -31,8 +37,6 @@ public class EventController {
         } catch (Exception error){
             return ResponseEntity.badRequest().body("La fecha no tiene el formato correcto");
         }
-
-
     }
 
     @PostMapping("/")
