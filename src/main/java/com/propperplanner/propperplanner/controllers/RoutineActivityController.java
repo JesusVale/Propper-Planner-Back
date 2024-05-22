@@ -17,8 +17,14 @@ public class RoutineActivityController {
     @Autowired
     RoutineActivityService routineActivityService;
 
-    @GetMapping("/{day}")
-    public ResponseEntity<?> getEventsByDay(@PathVariable String day){
+    @GetMapping("/{id}")
+    public ResponseEntity<RoutineActivity> getActivityById(@PathVariable Integer id){
+        RoutineActivity routineActivity = routineActivityService.getRoutineActivityById(id);
+        return ResponseEntity.ok(routineActivity);
+    }
+
+    @GetMapping("/day/{day}")
+    public ResponseEntity<?> getActivitiesByDay(@PathVariable String day){
         List<RoutineActivity> activities = routineActivityService.getRoutineByDay(day);
         return ResponseEntity.ok(activities);
     }

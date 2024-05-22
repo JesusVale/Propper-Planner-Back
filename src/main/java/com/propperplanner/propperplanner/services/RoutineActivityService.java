@@ -63,7 +63,7 @@ public class RoutineActivityService implements IRoutineActivityService{
         List<RoutineActivity> routineActivities = routineActivityDAO.findAll();
 
         for(RoutineActivity activity: routineActivities){
-            if(overlaps(routineActivity, activity)){
+            if(overlaps(routineActivity, activity) && activity.getId() != id){
                 throw new OverlapException("Times Overlap with activity: " + activity.getName());
             }
         }
