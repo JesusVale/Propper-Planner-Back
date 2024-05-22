@@ -35,9 +35,10 @@ public class RoutineActivityController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler(value = OverlapException.class)
-    public ResponseEntity<String> handleOverlapException(OverlapException ex){
-        return ResponseEntity.badRequest().body(ex.getMessage());
+    @PutMapping("/{id}")
+    public ResponseEntity<RoutineActivity> updateRoutineActivity(@PathVariable Integer id, @RequestBody RoutineActivity routineActivity){
+        RoutineActivity newRoutineActivity = routineActivityService.updateRoutineActivity(id, routineActivity);
+        return  ResponseEntity.ok(newRoutineActivity);
     }
 
 }
