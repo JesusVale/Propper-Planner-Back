@@ -15,4 +15,6 @@ public interface IEventService {
 
     public void removeEvent(Integer id);
 
+    public Event getEventById(Integer id);
+
 }

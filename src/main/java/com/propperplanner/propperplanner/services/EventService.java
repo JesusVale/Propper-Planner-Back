@@ -49,4 +49,15 @@ public class EventService implements IEventService {
     public void removeEvent(Integer id) {
         eventDAO.deleteById(id);
     }
+
+    @Override
+    public Event getEventById(Integer id) {
+        Optional<Event> optionalEvent = eventDAO.findById(id);
+        if(optionalEvent.isPresent()){
+            Event event = optionalEvent.get();
+            return event;
+        } else{
+            throw new EntityNotFoundException("No se encontró un evento con el id: "+ id);
+        }
+    }
 }
